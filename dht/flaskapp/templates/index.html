@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
+       
+			<title>test from flask 3</title>
+			<style>
+				body
+				{
+					background:url("{{ url_for('static', filename='bg.png') }}") no-repeat center center fixed;
+					background-size: cover;
+				}
+				
+				h1
+				{
+					font-family:verdana;
+					font-size:18px;				
+				}
+				
+				#main
+				{
+					margin: auto;
+					width: 500px;
+					height: 350px;
+					padding: 20px;
+					border: 3px solid #1a1a1a;
+					border-radius: 40px;
+					background: #FFF;
+					margin-top: 70px;
+					text-align: center;
+				}
+				
+				#main table
+				{
+					margin:auto;
+					text-align:left;
+					font-family:verdana;
+					font-size:14px;
+					font-weight:bold;
+				}
+				
+				#main table td
+				{
+					padding:5px;
+				}
+			</style>
+		</head>
+        <body>
+			<div id="main">
+				<h1>DHT11 app</h1>
+				<table>
+					<tr>
+						<td>Temperature: </td>
+						<td><div hx-get="/temp" hx-trigger="every 2s"></div></td>
+						</tr>
+						<tr>
+							<td>Humidity: </td>
+							<td><div hx-get="/humidity" hx-trigger="every 2s"></div></td>
+						</tr>
+				</table>
+			</div>
+		</body>
+    </html>
